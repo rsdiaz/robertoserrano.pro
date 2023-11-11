@@ -1,0 +1,151 @@
+---
+const items = [1,2,3,4,5];
+---
+
+<div class="timeline">
+  <section class="timeline">
+    <ul class="py-12 px-0">
+      {
+        items.map((item) => (
+          <li class="relative w-2 my-0 m-auto pb-10 list-none bg-slate-800 last-of-type:pb-20">
+            <div class="content relative w-96 rounded-lg group">
+              <div class="absolute transition rounded-lg opacity-25 -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 blur duration-400 group-hover:opacity-100 group-hover:duration-200"></div>
+              <div class="relative p-6 space-y-6 leading-none rounded-lg bg-slate-800 ring-1 ring-gray-900/5">
+                <div class="mb-2">
+                  <h2 class="font-black">
+                    Fullstack Developer June 2019 - Present
+                  </h2>
+                </div>
+                <p class="text-base">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting
+                  industry. Lorem Ipsum has been the industry's standard dummy
+                  text ever since the 1500s
+                </p>
+              </div>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+		<div class="flex justify-center">
+			<a href="/" data-name="top-button" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-200 ease-in-out" type="button">
+				ARRIBA
+			</a>
+		</div>
+  </section>
+</div>
+
+<style>
+
+  .timeline ul li:before {
+    content: "";
+    @apply absolute top-0 left-2/4 w-5 h-5 bg-yellow-500 rounded-full translate-x-[-50%];
+  }
+  .timeline ul li .content {
+    @apply top-2 relative w-96;
+    transition: all 0.4s ease-in-out;
+    z-index: 14;
+    box-shadow: 7px 6px 15px 0px rgba(0, 0, 0, 0.25);
+  }
+  .timeline ul li .content * {
+    color: #fff;
+  }
+  /* ***************** non vosible elements ***************** */
+  .timeline ul li .content.non-focus::before {
+    display: none;
+  }
+  .timeline ul li .content.non-focus {
+    transform: rotate(20deg);
+    opacity: 0.4;
+    filter: blur(5px);
+    z-index: 11;
+  }
+  /* ***************** non vosible elements ***************** */
+
+  .timeline ul li .content {
+    color: #d2d2d2;
+    background: #e6e6e6;
+  }
+  .timeline ul li .content p {
+    text-align: left;
+  }
+
+  .timeline ul li:nth-child(odd) .content {
+    left: 50px;
+    background: rgb(30 41 59);
+  }
+  .timeline ul li:nth-child(even) .content {
+    left: calc(-450px - 45px);
+    background: rgb(30 41 59);
+  }
+
+  /*****************/
+  /* -------------------------
+   ----- Media Queries ----- 
+   ------------------------- */
+  @media screen and (max-width: 1020px) {
+    .timeline ul li .content {
+      width: 41vw;
+    }
+
+    .timeline ul li:nth-child(even) .content {
+      left: calc(-41vw - 45px);
+    }
+  }
+  @media screen and (max-width: 700px) {
+    .timeline ul li {
+      margin-left: 20px;
+    }
+    .timeline ul li .content {
+      width: calc(100vw - 100px);
+    }
+    .timeline ul li:nth-child(even) .content {
+      left: 45px;
+      background: #01016f;
+      border-radius: 0px 4px 4px 4px;
+    }
+    .timeline ul li:nth-child(even) .content:before {
+      left: -33px;
+    }
+  }
+</style>
+
+<script>
+
+  function handleClick(event: Event) {
+    event.preventDefault();
+    console.log(event.target)
+    window.scrollTo(0, 0)
+  }
+
+  // Top button
+  const button = document.querySelector('[data-name="top-button"]');
+  button && button.addEventListener('click', handleClick);
+
+  // Get the elements
+  var elements = document.querySelectorAll(".content");
+  console.log("elements --- ", elements);
+  // Function to check for fade effect on scroll and resize
+  function checkForFade() {
+    var windowHeight = window.innerHeight;
+    elements.forEach(function (element) {
+      var elementHeight = element.scrollHeight;
+      var elementOffset = element.getBoundingClientRect().top;
+      var space =
+        windowHeight - (elementHeight + elementOffset - window.pageYOffset);
+
+      if (space < 150) {
+        element.classList.add("non-focus");
+      } else {
+        element.classList.remove("non-focus");
+      }
+    });
+  }
+
+  // Add event listeners for scroll and resize and call the checkForFade function
+  window.addEventListener("scroll", checkForFade);
+  window.addEventListener("resize", checkForFade);
+
+  // Trigger the scroll event on initial load
+  window.dispatchEvent(new Event("scroll"));
+</script>

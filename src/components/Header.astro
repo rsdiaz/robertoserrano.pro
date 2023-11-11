@@ -1,0 +1,141 @@
+<header
+  class="container py-24 md:pt-36 mx-auto flex flex-wrap flex-col md:flex-row items-center"
+>
+  <div
+    class="flex flex-col w-full xl:w-4/5 justify-center lg:items-start overflow-y-hidden"
+  >
+    <h1 class="text-5xl text-center font-[Poppins] font-black">
+      Hola!🖐️ soy <span
+        class="animate-text bg-gradient-to-r from-pink-500 via-yellow-200 to-pink-500 bg-clip-text text-transparent text-5xl"
+        >Roberto Serrano</span>
+    </h1>
+    <h2 class="text text-2xl pt-2 font-[Poppins]">
+      Software Engineer & FullStack Web Developer
+    </h2>
+    <p class="mt-4 pr-4">
+      Entusiasta del desarrollo web y la seguridad informática. Actualmente,
+      trabajo como desarrollador web full stack para una importante empresa del
+      sector de la automoción en España.
+    </p>
+    <div class="text"></div>
+  </div>
+  <div class="w-full xl:w-1/5 overflow-hidden">
+    <div class="flex p-4">
+      <img
+        class="shadow-[0_3px_15px_3px_rgba(0,0,0,0.3)]"
+        src="https://res.cloudinary.com/rserrano/image/upload/ar_1:1,b_rgb:262c35,c_fill,e_bgremoval,g_auto,r_max,w_400/v1611340481/blog/IMG_0206_ezq1zj.jpg"
+        style="border-radius:37% 63% 65% 35%/53% 56% 44% 47%;"
+      />
+    </div>
+  </div>
+</header>
+
+<script>
+  // ——————————————————————————————————————————————————
+  // TextScramble
+  // ——————————————————————————————————————————————————
+
+  class TextScramble {
+    private el: Partial<HTMLElement>;
+    private chars: string;
+    private resolve!: () => void;
+    private queue!: {
+      from: string;
+      to: string;
+      start: number;
+      end: number;
+      char?: string;
+    }[];
+    private frameRequest!: number;
+    private frame!: number;
+
+    constructor(el: Element) {
+      this.el = el;
+      this.chars = "!<>-_\\/[]{}—=+*^?#________";
+      this.update = this.update.bind(this);
+    }
+
+    setText(newText: string): Promise<void> {
+      const oldText = this.el.innerText || "";
+      const length = oldText ? Math.max(oldText.length, newText.length) : 0;
+      const promise = new Promise<void>((resolve) => (this.resolve = resolve));
+      this.queue = [];
+
+      for (let i = 0; i < length; i++) {
+        const from = oldText[i] || "";
+        const to = newText[i] || "";
+        const start = Math.floor(Math.random() * 40);
+        const end = start + Math.floor(Math.random() * 40);
+        this.queue.push({ from, to, start, end });
+      }
+
+      cancelAnimationFrame(this.frameRequest);
+      this.frame = 0;
+      this.update();
+      return promise;
+    }
+
+    private update() {
+      let output = "";
+      let complete = 0;
+
+      for (let i = 0, n = this.queue.length; i < n; i++) {
+        let { from, to, start, end, char } = this.queue[i];
+
+        if (this.frame >= end) {
+          complete++;
+          output += to;
+        } else if (this.frame >= start) {
+          if (!char || Math.random() < 0.28) {
+            char = this.randomChar();
+            this.queue[i].char = char;
+          }
+          output += `<span class="dud">${char}</span>`;
+        } else {
+          output += from;
+        }
+      }
+
+      this.el.innerHTML = output;
+
+      if (complete === this.queue.length) {
+        this.resolve();
+      } else {
+        this.frameRequest = requestAnimationFrame(this.update);
+        this.frame++;
+      }
+    }
+
+    private randomChar(): string {
+      return this.chars[Math.floor(Math.random() * this.chars.length)];
+    }
+  }
+
+  // ——————————————————————————————————————————————————
+  // Example
+  // ——————————————————————————————————————————————————
+
+  const phrases = [
+    "Software Engineer,",
+    "&",
+    "Full Stack Web Developer",
+    "just as I did",
+    "that there's a difference",
+    "Open Source Lover",
+    "JavaScript Arquitect",
+    "Open Source Contributor ❤️",
+  ];
+
+  const el = document.querySelector(".text");
+  const fx = new TextScramble(el as Element);
+
+  let counter = 0;
+  const next = () => {
+    fx.setText(phrases[counter]).then(() => {
+      setTimeout(next, 800);
+    });
+    counter = (counter + 1) % phrases.length;
+  };
+
+  next();
+</script>

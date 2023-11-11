@@ -1,0 +1,168 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import Nav from "../components/Nav.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import BigIcon from "../components/BigIcon.astro";
+---
+
+<Layout title="Roberto Serrano Diaz-Grande - Desarrollador de software">
+  <BigIcon />
+  <Nav />
+  <Header />
+  <ul role="list" class="link-card-grid">
+    <Card
+      href="/blog"
+      title="Blog 📝"
+      body="Consulta mis últimos post publicados sobre desarrollo web."
+    />
+    <Card
+      href="/sobre-mi"
+      title="Sobre mi 😉"
+      body="¿Quieres conocerme un poco más?"
+    />
+    <Card
+      href="/contacto"
+      title="Contacto ✉️"
+      body="Explora las diferentes formas de contactar conmigo."
+    />
+    <Card
+      href="https://github.com/rsdiaz"
+      title="Mis repositorios 🌐"
+      body="Siente libre de descargarlos y explorarlos!"
+    />
+  </ul>
+  <Footer />
+</Layout>
+
+<style>
+  .pic {
+    width: 150px;
+    opacity: 0.9;
+    filter: blur(0.5px);
+  }
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+  .link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 2rem;
+    padding: 0;
+  }
+</style>
+
+<script>
+  // ——————————————————————————————————————————————————
+  // TextScramble
+  // ——————————————————————————————————————————————————
+
+  class TextScramble {
+    private el: Partial<HTMLElement>;
+    private chars: string;
+    private resolve!: () => void;
+    private queue!: {
+      from: string;
+      to: string;
+      start: number;
+      end: number;
+      char?: string;
+    }[];
+    private frameRequest!: number;
+    private frame!: number;
+
+    constructor(el: Element) {
+      this.el = el;
+      this.chars = "!<>-_\\/[]{}—=+*^?#________";
+      this.update = this.update.bind(this);
+    }
+
+    setText(newText: string): Promise<void> {
+      const oldText = this.el.innerText || "";
+      const length = oldText ? Math.max(oldText.length, newText.length) : 0;
+      const promise = new Promise<void>((resolve) => (this.resolve = resolve));
+      this.queue = [];
+
+      for (let i = 0; i < length; i++) {
+        const from = oldText[i] || "";
+        const to = newText[i] || "";
+        const start = Math.floor(Math.random() * 40);
+        const end = start + Math.floor(Math.random() * 40);
+        this.queue.push({ from, to, start, end });
+      }
+
+      cancelAnimationFrame(this.frameRequest);
+      this.frame = 0;
+      this.update();
+      return promise;
+    }
+
+    private update() {
+      let output = "";
+      let complete = 0;
+
+      for (let i = 0, n = this.queue.length; i < n; i++) {
+        let { from, to, start, end, char } = this.queue[i];
+
+        if (this.frame >= end) {
+          complete++;
+          output += to;
+        } else if (this.frame >= start) {
+          if (!char || Math.random() < 0.28) {
+            char = this.randomChar();
+            this.queue[i].char = char;
+          }
+          output += `<span class="dud">${char}</span>`;
+        } else {
+          output += from;
+        }
+      }
+
+      this.el.innerHTML = output;
+
+      if (complete === this.queue.length) {
+        this.resolve();
+      } else {
+        this.frameRequest = requestAnimationFrame(this.update);
+        this.frame++;
+      }
+    }
+
+    private randomChar(): string {
+      return this.chars[Math.floor(Math.random() * this.chars.length)];
+    }
+  }
+
+  // ——————————————————————————————————————————————————
+  // Example
+  // ——————————————————————————————————————————————————
+
+  const phrases = [
+    "Software Engineer,",
+    "&",
+    "Full Stack Web Developer",
+    "just as I did",
+    "that there's a difference",
+    "between knowing the path",
+    "and walking the path",
+    "Open Source Contributor ❤️",
+  ];
+
+  const el = document.querySelector(".text");
+  const fx = new TextScramble(el as Element);
+
+  let counter = 0;
+  const next = () => {
+    fx.setText(phrases[counter]).then(() => {
+      setTimeout(next, 800);
+    });
+    counter = (counter + 1) % phrases.length;
+  };
+
+  next();
+</script>

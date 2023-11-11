@@ -1,0 +1,70 @@
+---
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import Layout from "./Layout.astro";
+const { frontmatter } = Astro.props;
+
+const postTitle = frontmatter.title
+const postDate = new Date(frontmatter.pubDate).toLocaleDateString()
+
+---
+<Layout title="frontmatter.title" >
+    <Nav />
+    <article>
+        <div class="mt-32">
+            <h1 class="text-5xl text-center font-black">{postTitle}</h1>
+            <div class="flex justify-center gap-4 pt-6">
+                <img src="https://res.cloudinary.com/rserrano/image/upload/v1598652059/roberto-serrano-desarrolloweb-tarragona.jpg" class="rounded-full w-7" />
+                <p class="text-center text-base">Escrito por {frontmatter.author} - {postDate}</p>
+            </div>
+            <div class="flex justify-center py-20">
+                <img src={frontmatter.image.url} class="rounded-md" />
+            </div>
+            <div class="post-content">
+                <slot />
+            </div>
+        </div>
+    </article>
+    <Footer />
+</Layout>
+
+<style is:global>
+
+.post-content {
+    font-size: 1rem;
+}
+
+.post-content p {
+    margin-bottom: 1.5rem;
+}
+
+.post-content :is(h1,h2,h3,h4,h5,h6) {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.post-content h2 {
+    font-size: 28px;
+}
+
+.post-content h3 {
+    font-size: 24px;
+}
+
+.post-content h4 {
+    font-size: 20px;
+}
+
+.post-content pre {
+    padding: 12px;
+    margin: 28px 0;
+    border-radius: 6px;
+}
+
+.post-content ul {
+    list-style: initial;
+    padding: 12px;
+    margin: 18px 0;
+}
+</style>
