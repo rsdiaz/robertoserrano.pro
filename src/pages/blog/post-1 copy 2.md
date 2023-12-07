@@ -5,7 +5,7 @@ pubDate: 2022-07-01
 description: 'Este es la primera publicación de mi nuevo blog Astro.'
 author: 'Alumno de Astro'
 image:
-    url: 'https://docs.astro.build/assets/full-logo-light.png'
+    url: 'https://images.unsplash.com/photo-1572433325951-b02421f32bf3?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     alt: 'El logotipo completo de Astro.'
 tags: ["Nextjs", "TypeScript"]
 ---

@@ -5,7 +5,7 @@ pubDate: 2020-11-06
 description: 'Este es la primera publicación de mi nuevo blog Astro.'
 author: 'Roberto Serrano Diaz-Grande'
 image:
-    url: 'https://www.robertoserrano.pro/content/images/2020/09/portainer-logo.png'
+    url: 'https://images.unsplash.com/photo-1628295581678-65ec0995d418?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     alt: 'El logotipo completo de Astro.'
 tags: ["Nodejs", "Ubuntu", "NVM"]
 ---
