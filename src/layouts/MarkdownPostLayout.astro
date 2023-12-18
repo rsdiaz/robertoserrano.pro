@@ -2,20 +2,24 @@
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import Layout from "./Layout.astro";
+import BigIcon from "../components/BigIcon.astro";
 const { frontmatter } = Astro.props;
 
 const postTitle = frontmatter.title
-const postDate = new Date(frontmatter.pubDate).toLocaleDateString()
+const metaTitle = postTitle + ' | Roberto Serrano Diaz-Grande'
+
+const postDate = new Date(frontmatter.pubDate).toLocaleDateString('es-es', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
 
 ---
-<Layout title="frontmatter.title" >
+<Layout title={metaTitle}>
+
     <Nav />
+    <BigIcon />
     <article>
-        <div class="mt-32">
-            <h1 class="text-5xl text-center font-black">{postTitle}</h1>
+        <div class="mt-32 p-6 m-auto max-w-5xl">
+            <h1 class="text-3xl text-center font-black">{postTitle}</h1>
             <div class="flex justify-center gap-4 pt-6">
-                <img src="https://res.cloudinary.com/rserrano/image/upload/v1598652059/roberto-serrano-desarrolloweb-tarragona.jpg" class="rounded-full w-7" />
-                <p class="text-center text-base">Escrito por {frontmatter.author} - {postDate}</p>
+                <p class="text-center text-base text-indigo-100">📅 {postDate}</p>
             </div>
             <div class="flex justify-center py-20">
                 <img src={frontmatter.image.url} class="rounded-md" />
@@ -34,8 +38,9 @@ const postDate = new Date(frontmatter.pubDate).toLocaleDateString()
     font-size: 1rem;
 }
 
-.post-content p {
-    margin-bottom: 1.5rem;
+.post-content p,
+.post-content ul {
+    @apply mb-5 text-indigo-100
 }
 
 .post-content :is(h1,h2,h3,h4,h5,h6) {
@@ -57,9 +62,7 @@ const postDate = new Date(frontmatter.pubDate).toLocaleDateString()
 }
 
 .post-content pre {
-    padding: 12px;
-    margin: 28px 0;
-    border-radius: 6px;
+    @apply p-6 my-12 rounded-xl
 }
 
 .post-content ul {

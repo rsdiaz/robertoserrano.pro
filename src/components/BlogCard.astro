@@ -1,32 +1,33 @@
 ---
+interface Props {
+	title: string;
+	body?: string;
+	href?: string | undefined;
+  date: string;
+  tags: string[];
+  image: Record<string, string>;
+}
 const { title, date, tags, href, image } = Astro.props
+
+const formatDate = new Date(date).toLocaleDateString('es-es', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
 ---
 
-<article>
-  <div class="relative group hover:scale-105 duration-300 ease-in-out">
-    <div
-      class="absolute transition rounded-lg opacity-25 -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 blur duration-400 group-hover:opacity-100 group-hover:duration-200"
-    >
-    </div>
+<article class="">
+  <div class="relative group">
+    <div class="absolute transition rounded-lg opacity-25 -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 blur duration-400 group-hover:opacity-100 group-hover:duration-200"></div>
     <a href={href}>
       <div class="relative w-full">
-          <img src={image.url} alt="" class="w-full h-40 rounded-t-md" />
+          <img src={image.url} alt="" class="w-full h-44 rounded-t-md" />
       </div>
-      <div class="relative p-6 space-y-6 leading-none rounded-b-lg bg-slate-800 ring-1 ring-gray-900/5">
+      <div class="relative p-6 space-y-6 leading-none rounded-b-lg bg-gray-900 ring-1 ring-gray-900/5">
         <div class="flex items-center space-x-4">
           <div>
-            <h3 class="text-lg font-semibold text-slate-300 transition ease-[cubic-bezier(0.22,1,0.36,1)] duration-500 group-hover:text-pink-500">{title}</h3>
-            <p class="text-sm text-blue-300 group-hover:text-blue-200">{date}</p>
+            <span class="text-xs inline-flex items-center font-bold leading-sm px-2 rounded-full bg-white text-gray-700 border">{tags[0]}</span>
+            <h3 class="my-4 text-lg font-semibold text-slate-300 transition ease-[cubic-bezier(0.22,1,0.36,1)] duration-500 group-hover:text-pink-500">{title}</h3>
+            <p class="mb-1 text-xs text-indigo-200">{formatDate}</p>
+            <!-- <p class="text-sm text-indigo-100">{description}</p> -->
           </div>
         </div>
-        <div class="flex justify-between">
-          <ul class="list-none flex space-x-2 text-sm">
-            {tags.map((e: any) => <span class="text-xs text-blue-300 group-hover:text-blue-200">{e}</span>)}
-          </ul>
-          <div class="flex space-x-1 text-blue-300 group-hover:text-blue-200">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16px" height="16px" viewBox="0,0,256,256"><g fill="currentColor" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(10.66667,10.66667)"><path d="M12,4c-8,0 -11,8 -11,8c0,0 3,8 11,8c8,0 11,-8 11,-8c0,0 -3,-8 -11,-8zM12,6c5.276,0 7.94459,4.26709 8.80859,5.99609c-0.865,1.717 -3.55359,6.00391 -8.80859,6.00391c-5.276,0 -7.94459,-4.26709 -8.80859,-5.99609c0.866,-1.717 3.55359,-6.00391 8.80859,-6.00391zM12,8c-2.209,0 -4,1.791 -4,4c0,2.209 1.791,4 4,4c2.209,0 4,-1.791 4,-4c0,-2.209 -1.791,-4 -4,-4zM12,10c1.105,0 2,0.895 2,2c0,1.105 -0.895,2 -2,2c-1.105,0 -2,-0.895 -2,-2c0,-1.105 0.895,-2 2,-2z"></path></g></g></svg>
-            <span class="text-xs text-blue-300 group-hover:text-blue-200">12</span>
-          </div>
       </div>
     </a>
   </div>

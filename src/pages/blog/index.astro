@@ -2,39 +2,93 @@
 import BigIcon from "../../components/BigIcon.astro";
 import BlogCard from "../../components/BlogCard.astro";
 import Footer from "../../components/Footer.astro";
+import MenuMobile from "../../components/MenuMobile.astro";
 import Nav from "../../components/Nav.astro";
+import OutLinedButton from "../../components/OutLinedButton.astro";
 import Layout from "../../layouts/Layout.astro";
 
 const allPosts = await Astro.glob("./*.md");
+
+const response = await fetch('http://api.open-notify.org/astros.json');
+const data = await response.json();
+const randomUser = data.number
 ---
 
-<Layout title="Articulos sobre desarrollo web | Roberto Serrano">
-  <BigIcon />
-  <Nav />
-  <div class="flex justify-center p-24">
-    <div
-      class="inline-block px-3 py-1 text-sm font-semibold text-indigo-100 rounded-lg md:text-center text-cn bg-[#202c47] bg-opacity-60 hover:cursor-pointer hover:bg-opacity-40"
-    >
-      Otro blog mas en la red sobre desarrollo web, pero este es el mio.
+<Layout
+  title="Descubre el Desarrollo Web: Tutoriales, Consejos y Más | Roberto Serrano"
+>
+  <MenuMobile />
+  <div class="p-6 m-auto max-w-5xl">
+    <Nav />
+
+    <div class="flex justify-center pt-48 pb-28">
+      <h1
+        class="inline-block px-3 py-1 text-sm font-semibold text-indigo-100 rounded-lg md:text-center text-cn bg-[#202c47] bg-opacity-60 hover:cursor-pointer hover:bg-opacity-40"
+      >
+      Consejos prácticos, tutoriales y reflexiones sobre el mundo del desarrollo web
+    </h1>
     </div>
+
+    <header>
+      <div class="flex flex-col pb-20">
+        <h2 class="pb-3 text-2xl font-extrabold">¡Hola, devs! 🖐️</h2>
+        <p class="pb-3">
+          Soy Roberto Serrano, el creador de este rincón digital dedicado al
+          fascinante mundo del desarrollo web. Bienvenidos a mi espacio virtual,
+          donde compartiré mi viaje, experiencias y descubrimientos en este
+          emocionante campo.
+        </p>
+        <p class="pb-3">
+          Como apasionado del desarrollo web, entiendo los
+          desafíos y las emociones que acompañan a este viaje creativo. Aquí, no
+          solo encontrarás tutoriales y consejos prácticos, sino también relatos
+          personales sobre mis propias travesías, éxitos y aprendizajes.
+        </p>
+        <p class="pb-3">
+          Este blog
+          es más que un recurso educativo; es un espacio para la comunidad. Únete
+          a mí mientras exploramos las últimas tendencias, experimentamos con
+          nuevas tecnologías y celebramos los logros en el universo del desarrollo
+          web. Estoy emocionado de tenerlos a todos ustedes aquí.
+        </p>
+        <p class="pb-3">
+          ¡Prepárense para
+          sumergirse en código, diseño y todo lo relacionado con la creación
+          digital! ¡Vamos a construir algo increíble juntos!
+        </p>
+      </div>
+    </header>
+
+    <div>
+      <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          allPosts.map((post) => (
+            <BlogCard
+              href={post.url}
+              title={post.frontmatter.title}
+              date={post.frontmatter.pubDate}
+              tags={post.frontmatter.tags}
+              image={post.frontmatter.image}
+            />
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="flex justify-center mt-12 pb-20">
+      <OutLinedButton href="/" value="Ir arriba" />
+    </div>
+
+    <section class="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+      <div class="relative rounded-lg group">
+        <div class="absolute transition rounded-lg opacity-25 -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 blur duration-400 group-hover:opacity-100 group-hover:duration-200"></div>
+        <div class="bg-[url('https://res.cloudinary.com/rserrano/image/upload/v1620924257/blog/banner_github_tjq8q0.jpg')] relative p-4 space-y-6 leading-none rounded-lg bg-slate-800 ring-1 ring-gray-900/5">
+          <h2 class="p-8 text-xl font-bold group-hover:text-pink-500">Mi perfil en github</h2>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
   </div>
-  <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {
-      allPosts.map((post) => (
-        <BlogCard
-          href={post.url}
-          title={post.frontmatter.title}
-          date={post.frontmatter.pubDate}
-          tags={post.frontmatter.tags}
-          image={post.frontmatter.image}
-        />
-      ))
-    }
-  </ul>
-  <div class="flex justify-center mt-12">
-    <a href="/" data-name="top-button" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-200 ease-in-out" type="button">
-      ARRIBA
-    </a>
-  </div>
-  <Footer />
+  <BigIcon />
 </Layout>
