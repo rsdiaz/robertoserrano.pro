@@ -1,0 +1,68 @@
+---
+interface Props {
+    image: string;
+    tag: string;
+    date: string;
+    title: string;
+    description: string;
+}
+
+const { image, tag, date, title, description } = Astro.props;
+---
+<header>
+    <div class="my-28">
+      <a
+        href="/blog"
+        class="flex items-center text-sm mb-12 !text-black dark:!text-white !no-underline hover:!text-blue-600 group"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20px"
+          height="20px"
+          viewBox="0 0 512 512"
+          ><title>ionicons-v5-a</title><polyline
+            points="328 112 184 256 328 400"
+            style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px"
+            class="stroke-black dark:stroke-white group-hover:stroke-blue-600"
+          ></polyline></svg
+        >
+        <span>Atras</span>
+      </a>
+      <div class="flex flex-col md:flex-row items-start gap-12">
+        <div
+          class="rounded-3xl overflow-hidden max-w-[200px] min-w-[200px]"
+        >
+          <img src={image} class="rounded-md" />
+        </div>
+        <div>
+          <div class="flex items-center gap-4">
+            <a
+              class="uppercase font-bold text-blue-600 text-xs !no-underline"
+              href=""
+            >
+              <span
+                class="text-xs inline-flex items-center font-bold leading-sm px-2 rounded-full bg-white text-gray-700 border"
+                >{tag}</span
+              >
+            </a>
+            <time
+              datetime="Thu Sep 14 2023 00:00:00 GMT+0000 (Coordinated Universal Time)"
+              class="uppercase font-bold text-xs text-gray-500 relative before:content-['●'] before:text-[7px] before:absolute before:left-[-10px]"
+            >
+              {date}
+            </time>
+            <p
+              class="uppercase font-bold text-xs text-gray-500 relative before:content-['●'] before:text-[7px] before:absolute before:left-[-10px]"
+            >
+              10 min read
+            </p>
+          </div>
+          <h1 class="text-5xl font-black mb-16 mt-4">{title}</h1>
+          <p class="text-2xl text-gray-400">
+            {description}
+          </p>
+        </div>
+      </div>
+    </div>
+</header>
+<hr class="border-black/50 dark:border-pink-500 -mx-4 my-12" />
