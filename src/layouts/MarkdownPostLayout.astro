@@ -3,71 +3,199 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import Layout from "./Layout.astro";
 import BigIcon from "../components/BigIcon.astro";
+import MenuMobile from "../components/MenuMobile.astro";
+import Container from "../components/Container.astro";
+import PostAuthorCard from "../components/PostAuthorCard.astro";
 const { frontmatter } = Astro.props;
 
-const postTitle = frontmatter.title
-const metaTitle = postTitle + ' | Roberto Serrano Diaz-Grande'
+const postTitle = frontmatter.title;
+const metaTitle = postTitle + " | Roberto Serrano Diaz-Grande";
 
-const postDate = new Date(frontmatter.pubDate).toLocaleDateString('es-es', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
-
+const postDate = new Date(frontmatter.pubDate).toLocaleDateString("es-es", {
+  weekday: "long",
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+});
 ---
-<Layout title={metaTitle}>
 
-    <Nav />
-    <BigIcon />
-    <article>
-        <div class="mt-32 p-6 m-auto max-w-5xl">
-            <h1 class="text-3xl text-center font-black">{postTitle}</h1>
-            <div class="flex justify-center gap-4 pt-6">
-                <p class="text-center text-base text-indigo-100">📅 {postDate}</p>
-            </div>
-            <div class="flex justify-center py-20">
+<Layout title={metaTitle}>
+  <div class="bg-slate-900 opacity-80">
+    <MenuMobile />
+    <Container>
+      <Nav />
+      <article>
+        <header>
+          <div class="my-28">
+            <a
+              href="/blog"
+              class="flex items-center text-sm mb-12 !text-black dark:!text-white !no-underline hover:!text-blue-600 group"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20px"
+                height="20px"
+                viewBox="0 0 512 512"
+                ><title>ionicons-v5-a</title><polyline
+                  points="328 112 184 256 328 400"
+                  style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px"
+                  class="stroke-black dark:stroke-white group-hover:stroke-blue-600"
+                ></polyline></svg
+              >
+              <span>Atras</span>
+            </a>
+            <div class="flex flex-col md:flex-row items-start gap-12">
+              <div
+                class="rounded-3xl overflow-hidden max-w-[200px] min-w-[200px]"
+              >
                 <img src={frontmatter.image.url} class="rounded-md" />
+              </div>
+              <div>
+                <div class="flex items-center gap-4">
+                  <a
+                    class="uppercase font-bold text-blue-600 text-xs !no-underline"
+                    href=""
+                  >
+                    <span
+                      class="text-xs inline-flex items-center font-bold leading-sm px-2 rounded-full bg-white text-gray-700 border"
+                      >{frontmatter.tags[0]}</span
+                    >
+                  </a>
+                  <time
+                    datetime="Thu Sep 14 2023 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                    class="uppercase font-bold text-xs text-gray-500 relative before:content-['●'] before:text-[7px] before:absolute before:left-[-10px]"
+                  >
+                    {postDate}
+                  </time>
+                  <p
+                    class="uppercase font-bold text-xs text-gray-500 relative before:content-['●'] before:text-[7px] before:absolute before:left-[-10px]"
+                  >
+                    10 min read
+                  </p>
+                </div>
+                <h1 class="text-5xl font-black mb-16 mt-4">{postTitle}</h1>
+                <p class="text-2xl text-gray-400">
+                  {frontmatter.description}
+                </p>
+              </div>
             </div>
-            <div class="post-content">
-                <slot />
-            </div>
-        </div>
-    </article>
+          </div>
+        </header>
+        <hr class="border-black/50 dark:border-pink-500 -mx-4 my-12" />
+        <section class="post-content">
+          <div class="relative max-w-[650px]">
+            <aside class="absolute left-full h-full hidden xl:block">
+              <div class="sticky top-16 w-[400px] pl-12">
+                <p class="text-lg font-semibold dark:text-gray-300">
+                  En este post
+                </p>
+                <nav
+                  id="table-of-contents"
+                  aria-label="Table Of Contents"
+                  data-astro-cid-xvrfupwn=""
+                >
+                  <ul
+                    class="not-prose list-none mt-4 space-y-1.5 pl-8"
+                    data-astro-cid-xvrfupwn=""
+                  >
+                    <li class="text-base" data-astro-cid-xvrfupwn="">
+                      <a
+                        href="#step-1-install-vercelog"
+                        class="!text-black dark:!text-gray-300 !no-underline"
+                        data-astro-cid-xvrfupwn=""
+                      >
+                        Step 1: Install @vercel/og
+                      </a>
+                    </li><li class="text-base" data-astro-cid-xvrfupwn="">
+                      <a
+                        href="#step-2-create-an-astro-endpoint"
+                        class="!text-black dark:!text-gray-300 !no-underline"
+                        data-astro-cid-xvrfupwn=""
+                      >
+                        Step 2: Create an Astro endpoint
+                      </a>
+                    </li><li class="text-base" data-astro-cid-xvrfupwn="">
+                      <a
+                        href="#step-3-checking-the-result"
+                        class="!text-black dark:!text-gray-300 !no-underline"
+                        data-astro-cid-xvrfupwn=""
+                      >
+                        Step 3: Checking the result
+                      </a>
+                    </li><li class="text-base" data-astro-cid-xvrfupwn="">
+                      <a
+                        href="#step-4-adding-og-tags-in-html"
+                        class="!text-black dark:!text-gray-300 !no-underline"
+                        data-astro-cid-xvrfupwn=""
+                      >
+                        Step 4: Adding OG tags in HTML
+                      </a>
+                    </li><li class="text-base" data-astro-cid-xvrfupwn="">
+                      <a
+                        href="#wrapping-up"
+                        class="!text-black dark:!text-gray-300 !no-underline"
+                        data-astro-cid-xvrfupwn=""
+                      >
+                        Wrapping up
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+                <p class="my-6 text-lg font-semibold dark:text-gray-300">
+                  Autor
+                </p>
+                <PostAuthorCard name={frontmatter.author} alt={frontmatter.author} github={frontmatter.github_profile} />
+                <a href="https://www.buymeacoffee.com/robertoserm"
+                  ><img
+                    src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=robertoserm&button_colour=BD5FFF&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00"
+                  /></a
+                >
+              </div>
+            </aside>
+            <slot />
+          </div>
+        </section>
+      </article>
+    </Container>
     <Footer />
+  </div>
 </Layout>
 
 <style is:global>
-
-.post-content {
+  .post-content {
     font-size: 1rem;
-}
+  }
 
-.post-content p,
-.post-content ul {
-    @apply mb-5 text-indigo-100
-}
+  .post-content p,
+  .post-content ul {
+    @apply mb-5 text-indigo-100;
+  }
 
-.post-content :is(h1,h2,h3,h4,h5,h6) {
+  .post-content :is(h1, h2, h3, h4, h5, h6) {
     margin-bottom: 1rem;
     margin-top: 1rem;
     font-weight: bold;
-}
+  }
 
-.post-content h2 {
+  .post-content h2 {
     font-size: 28px;
-}
+  }
 
-.post-content h3 {
+  .post-content h3 {
     font-size: 24px;
-}
+  }
 
-.post-content h4 {
+  .post-content h4 {
     font-size: 20px;
-}
+  }
 
-.post-content pre {
-    @apply p-6 my-12 rounded-xl
-}
+  .post-content pre {
+    @apply p-6 my-12 rounded-xl;
+  }
 
-.post-content ul {
+  .post-content ul {
     list-style: initial;
     padding: 12px;
     margin: 18px 0;
-}
+  }
 </style>

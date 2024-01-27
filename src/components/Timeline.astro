@@ -1,4 +1,6 @@
 ---
+import OutLinedButton from "./OutLinedButton.astro";
+
 const items = [1,2,3,4,5];
 ---
 
@@ -28,9 +30,7 @@ const items = [1,2,3,4,5];
       }
     </ul>
 		<div class="flex justify-center">
-			<a href="/" data-name="top-button" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-200 ease-in-out" type="button">
-				ARRIBA
-			</a>
+			<OutLinedButton href="/sobre-mi" value="Ir arriba" />
 		</div>
   </section>
 </div>

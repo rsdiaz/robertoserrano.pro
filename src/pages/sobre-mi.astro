@@ -1,16 +1,23 @@
 ---
 import BigIcon from "../components/BigIcon.astro";
+import Container from "../components/Container.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import MenuMobile from "../components/MenuMobile.astro";
 import Nav from "../components/Nav.astro";
 import Timeline from "../components/Timeline.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Roberto Serrano Diaz-Grande - Desarrollador de software">
-  <BigIcon />
-  <Nav />
-  <Header />
-  <Timeline />
-  <Footer />
+<Layout title="Roberto Serrano Diaz-Grande - Desarrollador de software en Tarragona">
+  <div class="bg-slate-900 opacity-80">
+    <MenuMobile />
+    <Container>
+      <BigIcon />
+      <Nav />
+      <Header />
+      <Timeline />
+      <Footer />
+    </Container>
+  </div>
 </Layout>
