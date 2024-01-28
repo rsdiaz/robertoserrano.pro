@@ -1,12 +1,11 @@
 ---
 import BigIcon from "../../components/BigIcon.astro";
-import BlogCard from "../../components/BlogCard.astro";
+import ButtonScrollToTop from "../../components/ButtonScrollToTop.astro";
 import Card from "../../components/Card.astro";
 import Container from "../../components/Container.astro";
 import Footer from "../../components/Footer.astro";
 import MenuMobile from "../../components/MenuMobile.astro";
 import Nav from "../../components/Nav.astro";
-import OutLinedButton from "../../components/OutLinedButton.astro";
 import Layout from "../../layouts/Layout.astro";
 
 const allPosts = await Astro.glob("./*.md");
@@ -65,17 +64,6 @@ const randomUser = data.number
     
         <div>
           <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-            <!-- {
-              allPosts.map((post) => (
-                <BlogCard
-                  href={post.url}
-                  title={post.frontmatter.title}
-                  date={post.frontmatter.pubDate}
-                  tags={post.frontmatter.tags}
-                  image={post.frontmatter.image}
-                />
-              ))
-            } -->
             {
               allPosts.map((post) => (
                 <Card
@@ -91,9 +79,8 @@ const randomUser = data.number
         </div>
     
         <div class="flex justify-center mt-12 pb-20">
-          <OutLinedButton href="/" value="Ir arriba" />
+          <ButtonScrollToTop />
         </div>
-    
         <Footer />
     </Container>
     <BigIcon />
