@@ -1,8 +1,17 @@
+---
+import {
+  GITHUB_PROFILE_URL,
+  TWITTER_PROFILE_URL,
+  LINKEDIN_PROFILE_URL,
+  NPM_PROFILE_URL,
+} from "../constants";
+---
+
 <section>
   <div class="flex justify-center content-center">
     <a
       class="inline-block text-yellow-500 no-underline hover:text-pink-500 hover:text-underline text-center h-10 p-2 md:h-auto md:p-4 transform hover:scale-125 duration-300 ease-in-out"
-      href="https://www.linkedin.com/in/roberto-serrano-diaz-grande"
+      href={LINKEDIN_PROFILE_URL}
     >
       <svg
         role="img"
@@ -16,7 +25,7 @@
     </a>
     <a
       class="inline-block text-yellow-500 no-underline hover:text-pink-500 hover:text-underline text-center h-10 p-2 md:h-auto md:p-4 transform hover:scale-125 duration-300 ease-in-out"
-      href="https://twitter.com/Rovbeat"
+      href={TWITTER_PROFILE_URL}
     >
       <svg
         role="img"
@@ -30,7 +39,7 @@
     </a>
     <a
       class="inline-block text-yellow-500 no-underline hover:text-pink-500 hover:text-underline text-center h-10 p-2 md:h-auto md:p-4 transform hover:scale-125 duration-300 ease-in-out"
-      href="https://github.com/rsdiaz"
+      href={GITHUB_PROFILE_URL}
     >
       <svg
         role="img"
@@ -44,7 +53,7 @@
     </a>
     <a
       class="inline-block text-yellow-500 no-underline hover:text-pink-500 hover:text-underline text-center h-10 p-2 md:h-auto md:p-4 transform hover:scale-125 duration-300 ease-in-out"
-      href="https://www.npmjs.com/~robfree"
+      href={NPM_PROFILE_URL}
     >
       <svg
         role="img"
