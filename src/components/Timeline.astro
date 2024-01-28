@@ -1,29 +1,28 @@
 ---
 import ButtonScrollToTop from "./ButtonScrollToTop.astro";
-import OutLinedButton from "./OutLinedButton.astro";
 
-const items = [1,2,3,4,5];
+import { timelineData } from '../constants';
 ---
 
 <div class="timeline">
   <section class="timeline">
     <ul class="py-12 px-0">
       {
-        items.map((item) => (
+        timelineData.map((item) => (
           <li class="relative w-2 my-0 m-auto pb-10 list-none bg-slate-800 last-of-type:pb-20">
             <div class="content relative w-96 rounded-lg group">
               <div class="absolute transition rounded-lg opacity-25 -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 blur duration-400 group-hover:opacity-100 group-hover:duration-200"></div>
               <div class="relative p-6 space-y-6 leading-none rounded-lg bg-slate-800 ring-1 ring-gray-900/5">
                 <div class="mb-2">
                   <h2 class="font-black">
-                    Fullstack Developer June 2019 - Present
+                    {item.title}
                   </h2>
                 </div>
-                <p class="text-base">
+                <!-- <p class="text-base">
                   Lorem Ipsum is simply dummy text of the printing and typesetting
                   industry. Lorem Ipsum has been the industry's standard dummy
                   text ever since the 1500s
-                </p>
+                </p> --!>
               </div>
             </div>
           </li>
@@ -95,7 +94,7 @@ const items = [1,2,3,4,5];
   }
   @media screen and (max-width: 700px) {
     .timeline ul li {
-      margin-left: 20px;
+      margin-left: 0px;
     }
     .timeline ul li .content {
       width: calc(100vw - 100px);
