@@ -11,7 +11,6 @@ interface Props {
 const { href, title, body, date, tags, image } = Astro.props;
 
 const formatDate = new Date(date).toLocaleDateString("es-es", {
-  weekday: "long",
   year: "numeric",
   month: "short",
   day: "numeric",
@@ -24,12 +23,12 @@ const formatDate = new Date(date).toLocaleDateString("es-es", {
   <div
     class="relative w-full px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:text-pink-500"
   >
-    <div class="flex flex-col md:flex-row items-start gap-12">
-      <div class="rounded-md overflow-hidden max-w-[100px] min-w-[100px]">
+    <div class="flex flex-row items-center gap-4">
+      <div class="rounded-md overflow-hidden max-w-[100px] min-w-[68px]">
         <img src={image} class="rounded-md" />
       </div>
       <a href={href}>
-        <div class="uppercase flex items-baseline  gap-4 py-2">
+        <div class="uppercase flex items-baseline  gap-4 py-1">
           <span
             class="text-xs inline-flex items-center font-bold leading-sm px-2 rounded-full bg-white text-gray-700 border"
           >
