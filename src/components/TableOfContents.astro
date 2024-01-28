@@ -1,0 +1,38 @@
+---
+import TableOfContentsHeading from "./TableOfContentsHeading.astro";
+
+// TableOfContents.astro
+const { headings } = Astro.props;
+const toc = buildToc(headings);
+
+function buildToc(headings: []) {
+  const toc: any = [];
+  const parentHeadings = new Map();
+
+  function addSubheading(parentDepth: any, heading: string) {
+    const parent = parentHeadings.get(parentDepth);
+    if (parent) {
+      parent.subheadings.push(heading);
+    }
+  }
+
+  headings.forEach((h: any) => {
+    const heading = { ...h, subheadings: [] };
+    parentHeadings.set(heading.depth, heading);
+
+    if (heading.depth === 2) {
+      toc.push(heading);
+    } else {
+      addSubheading(heading.depth - 1, heading);
+    }
+  });
+
+  return toc;
+}
+---
+
+<nav id="table-of-contents" aria-label="Tabla de contenidos">
+  <ul class="mt-4 !space-y-1.5 !p-4">
+    {toc.map((heading: any) => <TableOfContentsHeading heading={heading} />)}
+  </ul>
+</nav>

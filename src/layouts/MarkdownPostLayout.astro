@@ -7,7 +7,8 @@ import Container from "../components/Container.astro";
 import PostAuthorCard from "../components/PostAuthorCard.astro";
 import PostHeader from "../components/PostHeader.astro";
 import Comments from "../components/Comments.astro";
-const { frontmatter } = Astro.props;
+import TableOfContents from "../components/TableOfContents.astro";
+const { frontmatter, headings } = Astro.props;
 
 const postTitle = frontmatter.title;
 const metaTitle = postTitle + " | Roberto Serrano Diaz-Grande";
@@ -40,58 +41,7 @@ const postDate = new Date(frontmatter.pubDate).toLocaleDateString("es-es", {
                 <p class="text-lg font-semibold dark:text-gray-300">
                   En este post
                 </p>
-                <nav
-                  id="table-of-contents"
-                  aria-label="Table Of Contents"
-                  data-astro-cid-xvrfupwn=""
-                >
-                  <ul
-                    class="not-prose list-none mt-4 space-y-1.5 pl-8"
-                    data-astro-cid-xvrfupwn=""
-                  >
-                    <li class="text-base" data-astro-cid-xvrfupwn="">
-                      <a
-                        href="#step-1-install-vercelog"
-                        class="!text-black dark:!text-gray-300 !no-underline"
-                        data-astro-cid-xvrfupwn=""
-                      >
-                        Step 1: Install @vercel/og
-                      </a>
-                    </li><li class="text-base" data-astro-cid-xvrfupwn="">
-                      <a
-                        href="#step-2-create-an-astro-endpoint"
-                        class="!text-black dark:!text-gray-300 !no-underline"
-                        data-astro-cid-xvrfupwn=""
-                      >
-                        Step 2: Create an Astro endpoint
-                      </a>
-                    </li><li class="text-base" data-astro-cid-xvrfupwn="">
-                      <a
-                        href="#step-3-checking-the-result"
-                        class="!text-black dark:!text-gray-300 !no-underline"
-                        data-astro-cid-xvrfupwn=""
-                      >
-                        Step 3: Checking the result
-                      </a>
-                    </li><li class="text-base" data-astro-cid-xvrfupwn="">
-                      <a
-                        href="#step-4-adding-og-tags-in-html"
-                        class="!text-black dark:!text-gray-300 !no-underline"
-                        data-astro-cid-xvrfupwn=""
-                      >
-                        Step 4: Adding OG tags in HTML
-                      </a>
-                    </li><li class="text-base" data-astro-cid-xvrfupwn="">
-                      <a
-                        href="#wrapping-up"
-                        class="!text-black dark:!text-gray-300 !no-underline"
-                        data-astro-cid-xvrfupwn=""
-                      >
-                        Wrapping up
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
+                <TableOfContents headings={headings} />
                 <p class="my-6 text-lg font-semibold dark:text-gray-300">
                   Autor
                 </p>

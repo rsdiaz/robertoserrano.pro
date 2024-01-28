@@ -1,0 +1,23 @@
+---
+// TableOfContentsHeading.astro
+const { heading } = Astro.props;
+---
+
+<li class="text-base">
+  <a class="!text-black dark:!text-gray-300 !no-underline" href={'#' + heading.slug}>
+    {heading.text}
+  </a>
+<!--   {
+    heading.subheadings.length > 0 && (
+      <ul class="!p-2">
+        {heading.subheadings.map((subheading: any) => (
+            <li class="text-base">
+                <a class="!text-black dark:!text-gray-300 !no-underline" href={'#' + heading.slug}>
+                    {subheading.text}
+                </a>
+            </li>
+        ))}
+      </ul>
+    )
+  } -->
+</li>
