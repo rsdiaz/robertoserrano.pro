@@ -1,0 +1,35 @@
+---
+import PostAuthorCard from "./PostAuthorCard.astro";
+import TableOfContents from "./TableOfContents.astro";
+
+interface Props {
+    headings: string
+    authorName: string
+    imageAlt: string
+    githubProfile: string
+}
+
+const { headings, authorName, imageAlt, githubProfile } = Astro.props
+---
+
+<aside class="absolute left-full h-full hidden xl:block">
+    <div class="sticky top-16 w-[400px] pl-12">
+      <p class="text-lg font-semibold dark:text-gray-300">
+        En este post
+      </p>
+      <TableOfContents headings={headings} />
+      <p class="my-6 text-lg font-semibold dark:text-gray-300">
+        Autor
+      </p>
+      <PostAuthorCard
+        name={authorName}
+        alt={imageAlt}
+        github={githubProfile}
+      />
+      <a href="https://www.buymeacoffee.com/robertoserm"
+        ><img
+          src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=robertoserm&button_colour=BD5FFF&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00"
+        /></a
+      >
+    </div>
+  </aside>

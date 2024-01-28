@@ -4,10 +4,11 @@ import Footer from "../components/Footer.astro";
 import Layout from "./Layout.astro";
 import MenuMobile from "../components/MenuMobile.astro";
 import Container from "../components/Container.astro";
-import PostAuthorCard from "../components/PostAuthorCard.astro";
 import PostHeader from "../components/PostHeader.astro";
 import Comments from "../components/Comments.astro";
-import TableOfContents from "../components/TableOfContents.astro";
+import PostAside from "../components/PostAside.astro";
+import PostAuthorCard from "../components/PostAuthorCard.astro";
+import PostFooter from "../components/PostFooter.astro";
 const { frontmatter, headings } = Astro.props;
 
 const postTitle = frontmatter.title;
@@ -36,28 +37,18 @@ const postDate = new Date(frontmatter.pubDate).toLocaleDateString("es-es", {
         />
         <section class="post-content">
           <div class="relative max-w-[650px]">
-            <aside class="absolute left-full h-full hidden xl:block">
-              <div class="sticky top-16 w-[400px] pl-12">
-                <p class="text-lg font-semibold dark:text-gray-300">
-                  En este post
-                </p>
-                <TableOfContents headings={headings} />
-                <p class="my-6 text-lg font-semibold dark:text-gray-300">
-                  Autor
-                </p>
-                <PostAuthorCard
-                  name={frontmatter.author}
-                  alt={frontmatter.author}
-                  github={frontmatter.github_profile}
-                />
-                <a href="https://www.buymeacoffee.com/robertoserm"
-                  ><img
-                    src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=robertoserm&button_colour=BD5FFF&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00"
-                  /></a
-                >
-              </div>
-            </aside>
+            <PostAside
+              headings={headings}
+              authorName={frontmatter.author}
+              imageAlt={frontmatter.author}
+              githubProfile={frontmatter.github_profile}
+            />
             <slot />
+            <PostFooter
+              name={frontmatter.author}
+              alt={frontmatter.author}
+              github={frontmatter.github_profile}
+            />
             <Comments />
           </div>
         </section>
@@ -75,6 +66,10 @@ const postDate = new Date(frontmatter.pubDate).toLocaleDateString("es-es", {
   .post-content p,
   .post-content ul {
     @apply mb-5 text-indigo-100;
+  }
+
+  .post-content a {
+    @apply hover:text-pink-500 underline;
   }
 
   .post-content :is(h1, h2, h3, h4, h5, h6) {
