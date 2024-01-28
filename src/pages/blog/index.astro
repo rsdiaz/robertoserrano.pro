@@ -64,7 +64,7 @@ const randomUser = data.number
         </header>
     
         <div>
-          <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             <!-- {
               allPosts.map((post) => (
                 <BlogCard
@@ -83,6 +83,7 @@ const randomUser = data.number
                   title={post.frontmatter.title}
                   date={post.frontmatter.pubDate}
                   tags={post.frontmatter.tags}
+                  image={post.frontmatter.image.url}
                 />
               ))
             }
