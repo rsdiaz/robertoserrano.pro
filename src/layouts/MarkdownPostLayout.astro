@@ -6,6 +6,7 @@ import MenuMobile from "../components/MenuMobile.astro";
 import Container from "../components/Container.astro";
 import PostAuthorCard from "../components/PostAuthorCard.astro";
 import PostHeader from "../components/PostHeader.astro";
+import Comments from "../components/Comments.astro";
 const { frontmatter } = Astro.props;
 
 const postTitle = frontmatter.title;
@@ -107,6 +108,7 @@ const postDate = new Date(frontmatter.pubDate).toLocaleDateString("es-es", {
               </div>
             </aside>
             <slot />
+            <Comments />
           </div>
         </section>
       </article>
