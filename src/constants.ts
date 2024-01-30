@@ -2,14 +2,14 @@ export const GITHUB_PROFILE_URL = 'https://github.com/rsdiaz'
 export const TWITTER_PROFILE_URL = 'https://twitter.com/Rovbeat'
 export const LINKEDIN_PROFILE_URL = 'https://www.linkedin.com/in/roberto-serrano-diaz-grande'
 export const NPM_PROFILE_URL = 'https://www.npmjs.com/~robfree'
-export const STATIC_OG_IMAGE_URL = 'https://res.cloudinary.com/rserrano/image/upload/v1706652797/Screenshot_2024-01-30_at_23-09-52_Sobre_mi_-_Roberto_Serrano_desarrollador_de_software_en_Tarragona_ooz8y6.png'
+export const STATIC_OG_IMAGE_URL = 'https://res.cloudinary.com/rserrano/image/upload/v1706656551/Screenshot_2024-01-31_at_00-15-01_Sobre_mi_-_Roberto_Serrano_desarrollador_de_software_en_Tarragona_lzoqll.png'
 
 export const timelineData = [
     {
         position: 'Geek',
         site: 'localhost',
         date:"1989 - presente",
-        description: 'AMSTRAMD CPC + un manual de BASIC - Aquí comenzó todo...'
+        description: 'Amstrad CPC 464 + un manual de BASIC - Aquí comenzó todo...'
     },
     {
         position: 'SYSADMIN / Junior Web Developer',

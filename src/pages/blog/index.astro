@@ -6,6 +6,7 @@ import Container from "../../components/Container.astro";
 import Footer from "../../components/Footer.astro";
 import MenuMobile from "../../components/MenuMobile.astro";
 import Nav from "../../components/Nav.astro";
+import { STATIC_OG_IMAGE_URL } from "../../constants";
 import Layout from "../../layouts/Layout.astro";
 
 const allPosts = await Astro.glob("./*.md");
@@ -17,6 +18,8 @@ const randomUser = data.number
 
 <Layout
   title="Descubre el Desarrollo Web: Tutoriales, Consejos y Más | Roberto Serrano"
+  description="Explora las últimas tendencias en desarrollo web con Roberto Serrano. Profundiza en el mundo de NodeJS, MongoDB, React y otras tecnologías punteras a través de tutoriales detallados, análisis y consejos de expertos. ¡Inspírate y lleva tus habilidades a la órbita digital!"
+  image={STATIC_OG_IMAGE_URL}
 >
   <div class="bg-slate-900 opacity-80">
     <MenuMobile />
@@ -37,27 +40,19 @@ const randomUser = data.number
             <h2 class="pb-3 text-2xl font-extrabold">¡Hola, devs! 🖐️</h2>
             <p class="pb-3">
               Soy Roberto Serrano, el creador de este rincón digital dedicado al
-              fascinante mundo del desarrollo web. Bienvenidos a mi espacio virtual,
-              donde compartiré mi viaje, experiencias y descubrimientos en este
-              emocionante campo.
-            </p>
-            <p class="pb-3">
-              Como apasionado del desarrollo web, entiendo los
-              desafíos y las emociones que acompañan a este viaje creativo. Aquí, no
-              solo encontrarás tutoriales y consejos prácticos, sino también relatos
-              personales sobre mis propias travesías, éxitos y aprendizajes.
+              fascinante mundo del desarrollo web.
             </p>
             <p class="pb-3">
               Este blog
               es más que un recurso educativo; es un espacio para la comunidad. Únete
               a mí mientras exploramos las últimas tendencias, experimentamos con
               nuevas tecnologías y celebramos los logros en el universo del desarrollo
-              web. Estoy emocionado de tenerlos a todos ustedes aquí.
+              web.
             </p>
             <p class="pb-3">
               ¡Prepárense para
-              sumergirse en código, diseño y todo lo relacionado con la creación
-              digital! ¡Vamos a construir algo increíble juntos!
+              sumergirse en código, datos y todo lo relacionado con la creación
+              digital!
             </p>
           </div>
         </header>

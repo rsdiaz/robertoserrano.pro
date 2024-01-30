@@ -1,10 +1,15 @@
 ---
 import OutLinedButton from "../components/OutLinedButton.astro";
 import Social from "../components/Social.astro";
+import { STATIC_OG_IMAGE_URL } from "../constants";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Roberto Serrrano Diaz-Grande | Desarrollador de sotfware">
+<Layout
+  title="Roberto Serrrano Diaz-Grande | Desarrollador de sotfware"
+  image={STATIC_OG_IMAGE_URL}
+  description="Únete a Roberto Serrano en una odisea de desarrollo web con insights expertos en tecnologías webs. Descubre guías prácticas, análisis profundos y consejos de vanguardia para elevar tus proyectos web."
+>
   <div
     class="w-screen h-screen flex flex-col justify-center bg-slate-900 opacity-80"
   >
