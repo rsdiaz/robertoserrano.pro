@@ -7,12 +7,11 @@ import Container from "../components/Container.astro";
 import PostHeader from "../components/PostHeader.astro";
 import Comments from "../components/Comments.astro";
 import PostAside from "../components/PostAside.astro";
-import PostAuthorCard from "../components/PostAuthorCard.astro";
 import PostFooter from "../components/PostFooter.astro";
 const { frontmatter, headings } = Astro.props;
 
 const postTitle = frontmatter.title;
-const metaTitle = postTitle + " | Roberto Serrano Diaz-Grande";
+const metaTitle = postTitle + " | Roberto Serrano";
 
 const postDate = new Date(frontmatter.pubDate).toLocaleDateString("es-es", {
   weekday: "long",
@@ -22,7 +21,7 @@ const postDate = new Date(frontmatter.pubDate).toLocaleDateString("es-es", {
 });
 ---
 
-<Layout title={metaTitle}>
+<Layout title={metaTitle} image={frontmatter.image.url} description={frontmatter.description} type="article">
   <div class="bg-slate-900 opacity-80">
     <MenuMobile />
     <Container>

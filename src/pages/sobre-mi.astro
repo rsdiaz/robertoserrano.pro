@@ -7,9 +7,14 @@ import MenuMobile from "../components/MenuMobile.astro";
 import Nav from "../components/Nav.astro";
 import Timeline from "../components/Timeline.astro";
 import Layout from "../layouts/Layout.astro";
+import { STATIC_OG_IMAGE_URL } from "../constants";
 ---
 
-<Layout title="Roberto Serrano Diaz-Grande - Desarrollador de software en Tarragona">
+<Layout
+  title="Sobre mi - Roberto Serrano desarrollador de software en Tarragona"
+  image={STATIC_OG_IMAGE_URL}
+  description="Roberto Serrano desarrollador de software en Tarragona"
+>
   <div class="bg-slate-900 opacity-80">
     <MenuMobile />
     <Container>

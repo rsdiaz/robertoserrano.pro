@@ -1,9 +1,14 @@
 ---
+import Metadata from '../components/Metadata.astro';
+
 interface Props {
   title: string;
+  image?: string;
+  description?: string;
+  type?: 'website' | 'article';
 }
 
-const { title } = Astro.props;
+const { title, image, description, type } = Astro.props;
 ---
 
 <!doctype html>
@@ -16,6 +21,7 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <link rel="stylesheet" href="/styles/style.css" />
     <title>{title}</title>
+    <Metadata title={title} image={image} description={description} type={type} />
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
       defer></script>

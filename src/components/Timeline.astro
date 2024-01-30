@@ -15,14 +15,12 @@ import { timelineData } from '../constants';
               <div class="relative p-6 space-y-6 leading-none rounded-lg bg-slate-800 ring-1 ring-gray-900/5">
                 <div class="mb-2">
                   <h2 class="font-black">
-                    {item.title}
+                    {item.position} - {item.site} - {item.date}
                   </h2>
                 </div>
-                <!-- <p class="text-base">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting
-                  industry. Lorem Ipsum has been the industry's standard dummy
-                  text ever since the 1500s
-                </p> --!>
+                <p class="text-base">
+                  {item.description}
+                </p>
               </div>
             </div>
           </li>
