@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: 'Estrenando nuevo sitio web desarrollado con Astro'
 pubDate: 2024-01-27
 description: 'Bienvenidos a la primera entrada de mi blog en este nuevo sitio web. En esta primera publicación, quiero presentarles el sitio que he desarrollado y hablar un poco sobre las herramientas que utilicé, centrándome especialmente en Astro.'
