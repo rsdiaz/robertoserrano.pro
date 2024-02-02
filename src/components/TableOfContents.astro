@@ -1,38 +1,88 @@
 ---
-import TableOfContentsHeading from "./TableOfContentsHeading.astro";
-
-// TableOfContents.astro
+import type { MarkdownHeading } from 'astro';
 const { headings } = Astro.props;
-const toc = buildToc(headings);
 
-function buildToc(headings: []) {
-  const toc: any = [];
-  const parentHeadings = new Map();
+type Props = {
+  headings: MarkdownHeading[];
+};
 
-  function addSubheading(parentDepth: any, heading: string) {
-    const parent = parentHeadings.get(parentDepth);
-    if (parent) {
-      parent.subheadings.push(heading);
-    }
+type HeadingWithSubheadings = MarkdownHeading & {
+  subheadings: MarkdownHeading[];
+};
+
+const grouppedHeadings = headings.reduce((array, heading) => {
+  if (heading.depth === 2) {
+    array.push({ ...heading, subheadings: [] });
+  } else if (heading.depth === 3) {
+    array.at(-1)?.subheadings.push(heading);
   }
-
-  headings.forEach((h: any) => {
-    const heading = { ...h, subheadings: [] };
-    parentHeadings.set(heading.depth, heading);
-
-    if (heading.depth === 2) {
-      toc.push(heading);
-    } else {
-      addSubheading(heading.depth - 1, heading);
-    }
-  });
-
-  return toc;
-}
+  return array;
+}, [] as HeadingWithSubheadings[]);
 ---
 
-<nav id="table-of-contents" aria-label="Tabla de contenidos">
-  <ul class="mt-4 !space-y-1.5 !p-4">
-    {toc.map((heading: any) => <TableOfContentsHeading heading={heading} />)}
-  </ul>
+<nav id="table-of-contents" aria-label="Table Of Contents">
+  <ol>
+    {
+      grouppedHeadings.map((h) => (
+        <li>
+          <a href={`#${h.slug}`}>{h.text}</a>
+          {h.subheadings.length > 0 && (
+            <ol>
+              {h.subheadings.map((sub) => (
+                <li>
+                  <a href={`#${sub.slug}`}>{sub.text}</a>
+                </li>
+              ))}
+            </ol>
+          )}
+        </li>
+      ))
+    }
+  </ol>
 </nav>
+
+<script>
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        const headingFragment = `#${entry.target.id}`;
+        const tocItem = document.querySelector(`a[href="${headingFragment}"]`) as Element;
+
+        if (entry.isIntersecting) {
+          const previouslyActivatedItem =
+            document.querySelector('.active-toc-item');
+
+          previouslyActivatedItem?.classList.remove('active-toc-item');
+          console.log(`${entry.target.id}`)
+          tocItem.classList.add('active-toc-item');
+        } else {
+          const isAnyOtherEntryIntersecting = entries.some(
+            (e) => e.target.id !== entry.target.id && e.isIntersecting
+          );
+
+          if (isAnyOtherEntryIntersecting) {
+            tocItem.classList.remove('active-toc-item');
+          }
+        }
+      }
+    },
+    { root: null, rootMargin: '0px', threshold: [1] }
+  );
+
+  const sectionHeadings = document.querySelectorAll(
+    'article > h2, article > h3'
+  );
+
+  console.log(sectionHeadings)
+
+  for (const heading of sectionHeadings) {
+    observer.observe(heading);
+  }
+</script>
+
+<style>
+.active-toc-item {
+  font-weight: bold;
+}
+</style>
