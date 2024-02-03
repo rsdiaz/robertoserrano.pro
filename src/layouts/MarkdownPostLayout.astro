@@ -8,7 +8,7 @@ import PostHeader from "../components/PostHeader.astro";
 import Comments from "../components/Comments.astro";
 import PostAside from "../components/PostAside.astro";
 import PostFooter from "../components/PostFooter.astro";
-const { frontmatter, headings } = Astro.props;
+const { frontmatter, headings, slug } = Astro.props;
 
 const postTitle = frontmatter.title;
 const metaTitle = postTitle + " | Roberto Serrano";
@@ -21,7 +21,12 @@ const postDate = new Date(frontmatter.pubDate).toLocaleDateString("es-es", {
 });
 ---
 
-<Layout title={metaTitle} image={frontmatter.image.url} description={frontmatter.description} type="article">
+<Layout
+  title={metaTitle}
+  image={`${import.meta.env.SITE}/blog/${slug}/og.png`}
+  description={frontmatter.description}
+  type="article"
+>
   <div class="bg-slate-900 opacity-80">
     <MenuMobile />
     <Container>
