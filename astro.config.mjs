@@ -3,11 +3,9 @@ import tailwind from '@astrojs/tailwind';
 
 import node from "@astrojs/node";
 
-const site = import.meta.env.MODE === "production" ? "https://robertoserrano.pro" : "http://localhost:4321";
-
 // https://astro.build/config
 export default defineConfig({
-  site: site,
+  site: 'https://robertoserrano.pro',
   markdown: {
     syntaxHighlight: 'shiki',
     shikiConfig: {
