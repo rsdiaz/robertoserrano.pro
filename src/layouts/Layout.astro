@@ -1,5 +1,5 @@
 ---
-import Metadata from '../components/Metadata.astro';
+import Metatags from '../components/Metatags.astro';
 
 interface Props {
   title: string;
@@ -15,13 +15,13 @@ const { title, image, description, type } = Astro.props;
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <link rel="stylesheet" href="/styles/style.css" />
     <title>{title}</title>
-    <Metadata title={title} image={image} description={description} type={type} />
+    <Metatags title={title} image={image} description={description} type={type} />
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
       defer></script>
