@@ -97,7 +97,7 @@ const postDate = new Date(frontmatter.pubDate).toLocaleDateString("es-es", {
   }
 
   .post-content pre {
-    @apply p-6 my-12 rounded-xl;
+    @apply p-6 my-12 rounded-xl text-xs;
   }
 
   .post-content ul {
@@ -105,4 +105,9 @@ const postDate = new Date(frontmatter.pubDate).toLocaleDateString("es-es", {
     padding: 12px;
     margin: 18px 0;
   }
+
+  .post-content img {
+    @apply rounded-xl
+  }
+
 </style>
