@@ -1,12 +1,13 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import node from "@astrojs/node";
-
 import sitemap from "@astrojs/sitemap";
+import { SITE_URL } from './src/constants';
+import { getSlugsFromCollection } from './src/utils';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://robertoserrano.pro',
+  site: SITE_URL,
   markdown: {
     syntaxHighlight: 'shiki',
     shikiConfig: {
@@ -19,7 +20,9 @@ export default defineConfig({
     // Example: Disable injecting a basic `base.css` import on every page.
     // Useful if you need to define and/or import your own custom `base.css`.
     applyBaseStyles: false
-  }), sitemap()],
+  }), sitemap({
+    customPages: getSlugsFromCollection('posts', '/blog'),
+  })],
   output: "server",
   adapter: node({
     mode: "standalone"
