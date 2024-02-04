@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://robertoserrano.pro/sitemap-index.xml
