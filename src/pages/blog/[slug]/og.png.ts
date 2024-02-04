@@ -31,7 +31,7 @@ export async function GET({ params }: Props) {
           type: 'div',
           props: {
             // using tailwind
-            tw: 'w-[250px] h-[250px] flex rounded-3xl overflow-hidden',
+            tw: 'w-[350px] h-[250px] flex rounded-3xl overflow-hidden rounded-xl',
             children: [
               {
                 type: 'img',
@@ -45,12 +45,12 @@ export async function GET({ params }: Props) {
         {
           type: 'div',
           props: {
-            tw: 'pl-10 shrink flex',
+            tw: 'pl-10 pr-10 shrink flex',
             children: [
               {
                 type: 'div',
                 props: {
-                  tw: 'text-6xl text-gray-300',
+                  tw: 'text-5xl text-gray-300',
                   style: {
                     fontFamily: 'DM Sans Bold',
                     letterSpacing: '-0.07em'
