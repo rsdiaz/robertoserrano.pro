@@ -166,7 +166,7 @@ export async function GET({ params }: Props) {
 ## Probando el resultado
 Para probar el endpoint tan solo añadimos a la url de nuestro post /og.png. En mi caso este a sido el resultado:
 
-![generando_imagenes_open_graph_en_astro](http://localhost:4321/blog/generando_imagenes_dinamicas_para_open_graph_en_astro/og.png)
+![generando_imagenes_open_graph_en_astro](https://robertoserrano.pro/blog/generando_imagenes_dinamicas_para_open_graph_en_astro/og.png)
 
 ## Añadir los OG tags en el HTML
 
