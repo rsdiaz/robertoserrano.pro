@@ -1,10 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
+import { STATIC_OG_IMAGE_URL } from "../constants";
 
 ---
 
-<Layout title="Contacto | Roberto Serrano">
+<Layout 
+  title="Contacto | Roberto Serrano desarrollo web en Tarragona."
+  image={STATIC_OG_IMAGE_URL}
+  description="Conecta conmigo para proyectos de desarrollo y diseño web en Tarragona. Estoy listo para discutir tus ideas y cómo podemos transformarlas en realidad. Visita mi página de contacto para empezar"
+>
     <Nav />
     <header class="relative mb-28 mt-36">
       <div>
