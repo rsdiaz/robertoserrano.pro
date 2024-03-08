@@ -1,7 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Nav from "../components/Nav.astro";
 import { STATIC_OG_IMAGE_URL } from "../constants";
+import Nav from "../components/Nav.astro";
+import MenuMobile from "../components/MenuMobile.astro";
+import Container from "../components/Container.astro";
+import Footer from "../components/Footer.astro";
+import ContactForm from "../components/ContactForm.astro";
 
 ---
 
@@ -10,38 +14,92 @@ import { STATIC_OG_IMAGE_URL } from "../constants";
   image={STATIC_OG_IMAGE_URL}
   description="Conecta conmigo para proyectos de desarrollo y diseño web en Tarragona. Estoy listo para discutir tus ideas y cómo podemos transformarlas en realidad. Visita mi página de contacto para empezar"
 >
-    <Nav />
-    <header class="relative mb-28 mt-36">
-      <div>
-        <h1 class="mb-8 text-5xl font-[Poppins] font-black">
-          <span class="animate-text bg-gradient-to-r from-pink-500 via-yellow-200 to-pink-500 bg-clip-text text-transparent text-5xl">¡Hablemos!</span> Tu opinión es importante para mí.
-        </h1>
-        <p>
-          Si tienes alguna pregunta, sugerencia, colaboración o simplemente deseas saludar, estaré encantado de escucharte. Puedes contactarme a través de los siguientes medios:
-        </p>
-      </div>
-    </header>
-    <form class="relative bg-gray-900 opacity-75 w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
-        <div class="absolute top-[5px] right-6">
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64px" height="64px" viewBox="0,0,256,256"><defs><linearGradient x1="26" y1="23.167" x2="26" y2="34.668" gradientUnits="userSpaceOnUse" id="color-1"><stop offset="0" stop-color="#6dc7ff" stop-opacity="0"></stop><stop offset="1" stop-color="#e6abff" stop-opacity="0"></stop></linearGradient><linearGradient x1="26" y1="6.5" x2="26" y2="57.561" gradientUnits="userSpaceOnUse" id="color-2"><stop offset="0" stop-color="#e4ef4d"></stop><stop offset="1" stop-color="#b951b1"></stop></linearGradient><linearGradient x1="32" y1="8.915" x2="32" y2="55.387" gradientUnits="userSpaceOnUse" id="color-3"><stop offset="0" stop-color="#e4ef4d"></stop><stop offset="1" stop-color="#b951b1"></stop></linearGradient></defs><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(4,4)"><path d="M15.082,25.762l9.625,8.141c0.746,0.633 1.84,0.633 2.59,0l9.621,-8.141c0.711,-0.602 0.285,-1.762 -0.648,-1.762h-20.54c-0.933,0 -1.359,1.16 -0.648,1.762z" fill="url(#color-1)"></path><path d="M18,49h16v2h-16z" fill="url(#color-2)"></path><path d="M48,9c-6.134,0 -11.277,4.276 -12.637,10h-27.363c-2.758,0 -5,2.242 -5,5v26c0,2.758 2.242,5 5,5h36c2.758,0 5,-2.242 5,-5v-15h2v-2h-3c-6.066,0 -11,-4.934 -11,-11c0,-6.066 4.934,-11 11,-11c6.066,0 11,4.934 11,11v3c0,1.102 -0.898,2 -2,2c-1.102,0 -2,-0.898 -2,-2v-3c0,-3.859 -3.141,-7 -7,-7c-3.859,0 -7,3.141 -7,7c0,3.859 3.141,7 7,7c2.125,0 4.027,-0.953 5.312,-2.453c0.606,1.437 2.032,2.453 3.688,2.453c2.207,0 4,-1.793 4,-4v-3c0,-7.168 -5.832,-13 -13,-13zM5,24.109l12.086,9.891l-12.086,9.891zM47,50c0,1.652 -1.348,3 -3,3h-36c-1.652,0 -3,-1.348 -3,-3v-3.527l13.668,-11.18l4.168,3.41c0.914,0.75 2.039,1.125 3.164,1.125c1.125,0 2.25,-0.375 3.164,-1.125l4.172,-3.41l13.664,11.18zM47,34.949v8.941l-12.086,-9.89l3.618,-3.12c2.159,2.3 5.136,3.814 8.468,4.069zM37.264,29.317l-9.365,7.835c-1.102,0.902 -2.699,0.902 -3.801,0l-18.399,-15.054c0.551,-0.664 1.371,-1.098 2.301,-1.098h27.051c-0.026,0.331 -0.051,0.662 -0.051,1c0,2.712 0.837,5.231 2.264,7.317zM48,27c-2.758,0 -5,-2.242 -5,-5c0,-2.758 2.242,-5 5,-5c2.758,0 5,2.242 5,5c0,2.758 -2.242,5 -5,5z" fill="url(#color-3)"></path></g></g></svg>
+  <div class="bg-slate-900 opacity-80">
+    <MenuMobile />
+    <Container>
+      <Nav />
+      <header>
+        <div class="flex flex-col my-28 md:flex-row items-start gap-12">
+          <div
+            class="max-w-[200px] min-w-[200px]"
+          >
+            <img src="https://res.cloudinary.com/rserrano/image/upload/v1709597830/DALL_E_2024-03-05_01.07.15_-_Create_a_simplified_version_of_the_previously_designed_mascot_for_a_web_development_and_design_company_suitable_for_use_as_a_favicon._The_design_shou_kfpwzh.webp" class="rounded-lg" />
+          </div>
+          <div>
+            <div class="flex items-center gap-4">
+              <a
+                class="uppercase font-bold text-blue-600 text-xs !no-underline"
+                href=""
+              >
+                <span
+                  class="text-xs inline-flex items-center font-bold leading-sm px-2 rounded-full bg-white text-gray-700 border"
+                  >Contacto</span
+                >
+              </a>
+            </div>
+            <h1 class="text-5xl font-black mb-16 mt-4">
+              <span
+                class="animate-text bg-gradient-to-r from-pink-500 via-yellow-200 to-pink-500 bg-clip-text text-transparent text-5xl"
+              >
+                  Contáctame
+              </span>
+            </h1>
+            <p class="text-2xl text-gray-400 mb-4">
+              ¿Estás buscando un experto en desarrollo y diseño web en Tarragona? ¡Has llegado al lugar correcto! Me especializo en crear soluciones web a medida que impulsan el éxito de tu negocio.
+            </p>
+            <p class="text-2xl text-gray-400">
+              Ya sea que necesites una página web desde cero, mejorar la existente o un diseño que destaque, estoy aquí para ayudarte a lograr tus objetivos.
+            </p>
+          </div>
         </div>
-        <div class="mb-4">
-          <label class="block text-blue-300 py-2 font-bold mb-2" for="emailaddress">
-            Email
-          </label>
-          <input class="shadow appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out" id="emailaddress" type="text" placeholder="tu@email.com">
+      </header>
+      <hr class="border-black/50 dark:border-pink-500 -mx-4 my-12" />
+      <section>
+        <div>
+          <h2 class="py-8 text-2xl font-bold">¿Cómo puedo ayudarte?</h2>
+          <ul class="flex gap-4">
+            <li class="mb-4 flex-1">
+              <section class="p-0.5 rounded-lg bg-gradient-to-br from-indigo-500 to-pink-500">
+                <div class="w-full px-5 py-2.5 bg-gray-900 rounded-lg">
+                  <h3 class="text-xl font-bold">Desarrollo Web</h3>
+                  <p>Construyo sitios web optimizados, rápidos y seguros.</p>
+                </div>
+              </section>
+            </li>
+            <li class="mb-4 flex-1">
+              <section class="p-0.5 rounded-lg bg-gradient-to-br from-indigo-500 to-pink-500">
+                <div class="w-full px-5 py-2.5 bg-gray-900 rounded-lg">
+                  <h3 class="text-xl font-bold">Desarrollo Web</h3>
+                  <p>Construyo sitios web optimizados, rápidos y seguros.</p>
+                </div>
+              </section>
+            </li>
+            <li class="mb-4 flex-1">
+              <section class="p-0.5 rounded-lg bg-gradient-to-br from-indigo-500 to-pink-500">
+                <div class="w-full px-5 py-2.5 bg-gray-900 rounded-lg">
+                  <h3 class="text-xl font-bold">Desarrollo Web</h3>
+                  <p>Construyo sitios web optimizados, rápidos y seguros.</p>
+                </div>
+              </section>
+            </li>
+          </ul>
         </div>
-        <div class="mb-4">
-          <label class="block text-blue-300 py-2 font-bold mb-2" for="emailaddress">
-            Nombre
-          </label>
-          <input class="shadow appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out" id="emailaddress" type="text" placeholder="Tu nombre">
+      </section>
+      <hr class="border-black/50 dark:border-pink-500 -mx-4 my-12" />
+      <section class="relative mb-28 mt-36">
+        <div class="flex">
+          <div>
+            <h1 class="mb-8 text-5xl font-[Poppins] font-black">
+              <span class="animate-text bg-gradient-to-r from-pink-500 via-yellow-200 to-pink-500 bg-clip-text text-transparent text-5xl">¡Hablemos!</span>
+            </h1>
+            <p>
+              Para consultas, cotizaciones o simplemente para saludar, completa el formulario de contacto a continuación. Me comprometo a responder en un plazo de 24 horas.
+            </p>
+          </div>
+          <ContactForm />
         </div>
-
-        <div class="flex items-center justify-between pt-4">
-          <button class="bg-gradient-to-r from-purple-800 to-green-500 hover:from-pink-500 hover:to-green-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out" type="button">
-            Sign Up
-          </button>
-        </div>
-      </form>
+      </section>
+      <Footer />
+    </Container>
+  </div>
 </Layout>

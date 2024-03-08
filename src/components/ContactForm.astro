@@ -1,0 +1,40 @@
+---
+import OutLinedButton from "../components/OutLinedButton.astro";
+---
+
+<form
+  class="relative w-full shadow-lg rounded-lg p-0.5"
+  action="https://formspree.io/f/moqewooe"
+  method="POST"
+>
+  <div class="p-4 bg-gray-900 rounded-lg">
+    <div class="mb-4">
+      <label class="block py-2 font-bold mb-1" for="name"> Nombre</label>
+      <input
+        class="shadow appearance-none border rounded w-full p-2 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
+        id="emailaddress"
+        type="text"
+        placeholder="Tu nombre"
+      />
+    </div>
+    <div class="mb-4">
+      <label class="block font-bold mb-1" for="_replyto"> Email</label>
+      <input
+        class="shadow appearance-none border rounded w-full p-2 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
+        name="_replyto"
+        type="email"
+        placeholder="tu@email.com"
+      />
+    </div>
+    <div class="mb-4">
+      <label class="block font-bold mb-1" for="_replyto"> Mensaje</label>
+      <textarea
+        class="shadow appearance-none border rounded w-full p-2 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
+        name="mensaje"
+        placeholder=""></textarea>
+    </div>
+    <div class="flex items-center justify-between pt-4">
+      <OutLinedButton href="/sobre-mi" value="Enviar" />
+    </div>
+  </div>
+</form>
