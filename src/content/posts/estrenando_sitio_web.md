@@ -5,7 +5,7 @@ description: 'Bienvenidos a la primera entrada de mi blog en este nuevo sitio we
 author: 'Roberto Serrano'
 github_profile: 'rsdiaz'
 image:
-    url: 'https://res.cloudinary.com/rserrano/image/upload/v1706400623/DALL_E_2024-01-28_01.10.10_-_A_minimalist_and_modern_blog_header_image_with_a_synthwave_style_suitable_for_a_web_development_blog_focusing_on_Astro_a_web_development_framework._rqmo5a.png'
+    url: 'https://res.cloudinary.com/rserrano/image/upload/c_crop,w_1116,h_628,ar_16:9/v1706567109/DALL_E_2024-01-29_23.21.16_-_Create_a_blog_header_image_that_combines_the_theme_of_web_development_with_space_exploration._The_design_should_depict_an_abstract_developer_figure_in_ktftfx.png'
     alt: 'El logotipo completo de Astro.'
 tags: ["Astro", "Ubuntu", "NVM"]
 ---
