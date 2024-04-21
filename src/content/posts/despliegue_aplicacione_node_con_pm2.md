@@ -178,3 +178,6 @@ PM2 no solo simplifica la gestión de aplicaciones Node.js, sino que también po
 Te animo a integrar PM2 en tus proyectos y a explorar cómo puede mejorar la disponibilidad y eficiencia de tus aplicaciones.
 
 ¿Tienes experiencias con PM2 que te gustaría compartir? ¡Deja tus comentarios abajo y hablemos!
+
+#### Enlaces relacionados:
+[PM2](https://pm2.keymetrics.io/)
