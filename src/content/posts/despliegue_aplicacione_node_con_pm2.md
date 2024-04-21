@@ -5,7 +5,7 @@ description: 'PM2 es una herramienta de gestión de procesos para Node.js con ca
 author: 'Roberto Serrano'
 github_profile: 'rsdiaz'
 image:
-    url: 'https://res.cloudinary.com/rserrano/image/upload/v1713206069/DALL_E_2024-04-13_11.11.56_-_Design_a_minimalist_image_representing_a_high-availability_application._The_image_should_include_abstract_interconnected_nodes_with_a_continuous_loop_hbarzt.webp'
+    url: 'https://res.cloudinary.com/rserrano/image/upload/v1713735855/DALL_E_2024-04-13_11.11.56_-_Design_a_minimalist_image_representing_a_high-availability_application._The_image_should_include_abstract_interconnected_nodes_with_a_continuous_loop_hbarzt_qzhfxc.png'
     alt: 'El logotipo completo de Astro.'
 tags: ["NodeJS"]
 ---
