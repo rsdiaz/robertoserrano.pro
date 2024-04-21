@@ -27,4 +27,3 @@ jobs:
         push: true
         tags: |
           robertoserrano83/mi-astro-web:latest
-          robertoserrano83/mi-astro-web:${{ github.sha }}
