@@ -75,13 +75,17 @@ const postDate = new Date(frontmatter.pubDate).toLocaleDateString("es-es", {
   }
 
   .post-content a {
-    @apply hover:text-pink-500 underline;
+    @apply hover:text-pink-500;
   }
 
   .post-content :is(h1, h2, h3, h4, h5, h6) {
     margin-bottom: 1rem;
     margin-top: 1rem;
     font-weight: bold;
+  }
+
+  .post-content h2:not(:first-of-type) {
+    margin-top: 48px;
   }
 
   .post-content h2 {
@@ -97,12 +101,12 @@ const postDate = new Date(frontmatter.pubDate).toLocaleDateString("es-es", {
   }
 
   .post-content pre {
-    @apply p-6 my-12 rounded-xl text-xs;
+    @apply p-6 mb-4 rounded-xl text-xs;
   }
 
   .post-content ul {
     list-style: initial;
-    padding: 12px;
+    padding: 0px 12px;
     margin: 18px 0;
   }
 
