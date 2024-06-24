@@ -92,6 +92,26 @@ const { title, image, description, type } = Astro.props;
     animation: moveBackground 30s linear infinite;
   }
 
+  @media (max-width: 767px) {
+    .background-animate:after {
+      content: "";
+      background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/756881/texture.svg)
+        center/cover;
+      position: fixed;
+      width: 400%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 999;
+      pointer-events: none;
+      opacity: 0.3;
+      filter: invert(1);
+      animation: moveBackground 30s linear infinite;
+    }
+  }
+
   .button {
     @apply bg-gradient-to-r from-indigo-900 to-pink-500 hover:from-pink-500 hover:to-indigo-900 text-white py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-200 ease-in-out;
   }
