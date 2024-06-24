@@ -3,7 +3,7 @@ interface Props {
   title: string;
   body?: string;
   href: string | undefined;
-  date: string;
+  date: Date;
   tags: string[];
   image: string;
 }
@@ -21,21 +21,13 @@ const formatDate = new Date(date).toLocaleDateString("es-es", {
   class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-indigo-500 to-pink-500 group-hover:from-indigo-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
 >
   <div
-    class="relative w-full px-2.5 py-2.5 transition-all ease-in duration-75 bg-gray-900 rounded-md group-hover:text-pink-500"
+    class="relative w-full h-full px-2.5 py-2.5 transition-all ease-in duration-75 bg-gray-900 rounded-md group-hover:text-pink-500"
   >
-    <div class="flex flex-row items-center gap-4">
+    <div class="flex flex-row items-center gap-4 h-full">
       <div class="rounded-md overflow-hidden max-w-[100px] min-w-[68px]">
-        <img src={image} class="rounded-md" />
+        <img src={image} class="rounded-md" alt={title} />
       </div>
       <a href={href}>
-        <div class="uppercase flex items-baseline  gap-4 py-1">
-          <span
-            class="text-xs inline-flex items-center font-bold leading-sm px-2 rounded-full bg-white text-gray-700 border"
-          >
-            {tags[0]}
-          </span>
-          <p class="mb-2 text-xs font-bold text-gray-500">{formatDate}</p>
-        </div>
         <h2 class="font-bold">
           {title}
           <span>&rarr;</span>
